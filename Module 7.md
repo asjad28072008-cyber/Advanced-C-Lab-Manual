@@ -17,11 +17,55 @@ Else
 Program:
 
 //type your code here
+```
+#include <stdio.h>
 
+// Step 1: Declare structure 'eligible' with age (integer) and n (character array)
+struct eligible {
+    int age;
+    char n[50];
+};
+
+int main() {
+    int i, num;
+
+    printf("Enter the number of persons: ");
+    scanf("%d", &num);
+
+    // Declaring an array of structures as per the experiment title
+    struct eligible e[num];
+
+    // Loop to input data, check eligibility, and display details
+    for(i = 0; i < num; i++) {
+        printf("\n--- Entering details for person %d ---\n", i + 1);
+        
+        // Step 3: Input age and name using scanf, store in e
+        printf("Enter Name: ");
+        scanf("%s", e[i].n);
+        printf("Enter Age: ");
+        scanf("%d", &e[i].age);
+
+        // Step 4: Eligibility Check
+        if (e[i].age <= 6) {
+            printf("Vaccine Eligibility: No\n");
+        } else {
+            printf("Vaccine Eligibility: Yes\n");
+        }
+
+        // Step 5: Print details
+        printf("Details -> Name: %s, Age: %d\n", e[i].n, e[i].age);
+    }
+
+    // Step 6: Return 0
+    return 0;
+}
+
+```
 
 Output:
 
 //paste your output here
+<img width="702" height="576" alt="image" src="https://github.com/user-attachments/assets/b21bada6-5270-4db3-aa8e-d2cf72dcae39" />
 
 
 Result:
@@ -45,7 +89,54 @@ Algorithm:
 Program:
 
 //type your code here
+```
+#include <stdio.h>
 
+// 1. Define structure numbers with members a and b.
+struct numbers {
+    int a;
+    int b;
+};
+
+// Function declaration for add
+struct numbers add(struct numbers num);
+
+int main() {
+    // 2. Declare variable n of type numbers.
+    struct numbers n;
+    struct numbers result;
+
+    // 3. Prompt the user to enter values for a and b.
+    printf("Enter value for a: ");
+    // 4. Input values for a and b into n using scanf.
+    scanf("%d", &n.a);
+    
+    printf("Enter value for b: ");
+    scanf("%d", &n.b);
+
+    // 5. Call the add function with n as an argument.
+    result = add(n);
+
+    // 6. Print the result returned by the add function.
+    printf("\n--- Result Structure ---\n");
+    printf("Sum stored in member 'a': %d\n", result.a);
+
+    // 7. Return 0
+    return 0;
+}
+
+// Function definition that accepts a structure and returns a structure
+struct numbers add(struct numbers num) {
+    struct numbers temp;
+    
+    // Perform addition and store the result inside the structure members
+    temp.a = num.a + num.b;
+    temp.b = 0; // Initializing the unused member
+    
+    return temp;
+}
+
+```
 
 
 
@@ -54,6 +145,7 @@ Output:
 
 //paste your output here
 
+<img width="487" height="370" alt="image" src="https://github.com/user-attachments/assets/fc588f70-d7e2-4e32-8914-8205dce73252" />
 
 
 
@@ -88,7 +180,45 @@ Program:
 
 //type your code here
 
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+int main() {
+    // 3. Declare a file pointer p and a character array to store the file name
+    FILE *p;
+    char name[100];
+
+    // 4. Prompt the user to enter a file name and use scanf to input it
+    printf("Enter the file name: ");
+    scanf("%s", name);
+
+    // 5. Print a message indicating that the file creation is initiated
+    printf("Creating file '%s'...\n", name);
+
+    // 6. Use fopen to open the file in write mode ("w")
+    p = fopen(name, "w");
+
+    // Check if the file opening was successful or unsuccessful
+    if (p == NULL) {
+        printf("Error: Could not create or open the file.\n");
+        return 1; // Exit the program with a non-zero status
+    }
+
+    // 1. Print a message indicating that the file has been opened successfully
+    printf("File opened successfully.\n");
+
+    // 2. Use fclose to close the file
+    fclose(p);
+
+    // 3. Print a message indicating that the file has been closed
+    printf("File closed successfully.\n");
+
+    // 5. Return 0 to indicate successful program execution
+    return 0;
+}
+
+```
 
 
 Output:
@@ -99,6 +229,7 @@ Output:
 
 
 
+<img width="852" height="212" alt="image" src="https://github.com/user-attachments/assets/3728890d-e49a-48b2-b66b-cf50d8209a6f" />
 
 
 
@@ -134,7 +265,54 @@ Use scanf to input the file name into the name array and the number of strings i
 Program:
 
 //type your code here
+```
+#include <stdio.h>
 
+int main() {
+    // Declare file pointer, character arrays, and integer variable
+    FILE *p;
+    char name[100];
+    char text[100];
+    int num;
+
+    // Prompt user for file name and number of strings
+    printf("Enter the file name: ");
+    scanf("%s", name);
+    
+    printf("Enter the number of strings: ");
+    scanf("%d", &num);
+
+    // Open the file in write mode ("w")
+    p = fopen(name, "w");
+
+    // Check if the file opening was unsuccessful
+    if (p == NULL) {
+        printf("Error: Could not open or create the file.\n");
+        return 1; 
+    }
+
+    // Print message indicating file opened successfully
+    printf("File has been opened successfully.\n");
+
+    // Loop to input strings from the user and write them to the file
+    printf("Enter the %d strings:\n", num);
+    for (int i = 0; i < num; i++) {
+        scanf("%s", text);
+        fputs(text, p);
+        fputs("\n", p); // Adds a newline character after each string in the file
+    }
+
+    // Close the file
+    fclose(p);
+
+    // Print message indicating data has been added successfully
+    printf("Data has been added successfully.\n");
+
+    // Return 0 to indicate successful execution
+    return 0;
+}
+
+```
 
 
 
@@ -143,6 +321,7 @@ Output:
 
 //paste your output here
 
+<img width="798" height="317" alt="image" src="https://github.com/user-attachments/assets/f3d02267-55c3-4214-bb3a-bf61ac59ed0a" />
 
 
 
@@ -188,7 +367,54 @@ Algorithm:
 Program:
 
 //type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+// Define the structure for a subject
+struct Subject {
+    char name[50];
+    int marks;
+};
+
+int main() {
+    int n;
+    struct Subject *s;
+
+    // 1 & 2. Input and read the number of subjects from the user
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+
+    // 3, 4 & 5. Dynamically allocate memory using malloc and check if allocation fails
+    s = (struct Subject *)malloc(n * sizeof(struct Subject));
+    if (s == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    // 6 & 7. Input the name and marks of each subject using a for loop
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter details for subject %d:\n", i + 1);
+        printf("Enter subject name: ");
+        scanf("%s", s[i].name);
+        printf("Enter marks: ");
+        scanf("%d", &s[i].marks);
+    }
+
+    // 8 & 9. Display the stored details using another for loop
+    printf("\n--- Displaying Subject Details ---\n");
+    for (int i = 0; i < n; i++) {
+        printf("Subject Name: %s, Marks: %d\n", s[i].name, s[i].marks);
+    }
+
+    // 10 & 11. Free the dynamically allocated memory to prevent memory leaks
+    free(s);
+
+    // 12 & 13. Return from the main function and end the program
+    return 0;
+}
+
+```
 
 
 
@@ -197,6 +423,8 @@ Output:
 
 //paste your output here
 
+
+<img width="537" height="642" alt="image" src="https://github.com/user-attachments/assets/dccb24be-51b4-4915-9497-06f28b65f1f4" />
 
 
 
